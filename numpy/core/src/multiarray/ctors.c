@@ -974,6 +974,8 @@ PyArray_NewFromDescr_int(PyTypeObject *subtype, PyArray_Descr *descr, int nd,
     }
 
     fa = (PyArrayObject_fields *) subtype->tp_alloc(subtype, 0);
+
+    //fa->ob_size = sd;
     if (fa == NULL) {
         Py_DECREF(descr);
         return NULL;

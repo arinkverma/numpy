@@ -644,7 +644,7 @@ typedef struct _arr_descr {
  */
 /* This struct will be moved to a private header in a future release */
 typedef struct tagPyArrayObject_fields {
-    PyObject_HEAD
+    PyObject_VAR_HEAD
     /* Pointer to the raw data buffer */
     char *data;
     /* The number of dimensions, also called 'ndim' */
@@ -683,22 +683,11 @@ typedef struct tagPyArrayObject_fields {
     PyObject *weakreflist;
 } PyArrayObject_fields;
 
-/*
- * To hide the implementation details, we only expose
- * the Python struct HEAD.
- */
-#if !defined(NPY_NO_DEPRECATED_API) || \
-    (NPY_NO_DEPRECATED_API < NPY_1_7_API_VERSION)
-/*
- * Can't put this in npy_deprecated_api.h like the others.
- * PyArrayObject field access is deprecated as of NumPy 1.7.
- */
-typedef PyArrayObject_fields PyArrayObject;
-#else
+
 typedef struct tagPyArrayObject {
         PyObject_HEAD
 } PyArrayObject;
-#endif
+
 
 #define NPY_SIZEOF_PYARRAYOBJECT (sizeof(PyArrayObject_fields))
 

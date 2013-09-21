@@ -1669,8 +1669,7 @@ NPY_NO_EXPORT PyTypeObject PyArray_Type = {
 #if defined(NPY_PY3K)
     PyVarObject_HEAD_INIT(NULL, 0)
 #else
-    PyObject_HEAD_INIT(NULL)
-    0,                                          /* ob_size */
+    PyVarObject_HEAD_INIT(NULL, 0)
 #endif
     "numpy.ndarray",                            /* tp_name */
     NPY_SIZEOF_PYARRAYOBJECT,                   /* tp_basicsize */
